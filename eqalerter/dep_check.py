@@ -57,13 +57,13 @@ class DepCheck:
         print("")
 
 
-    # verify that LOG=TRUE in eqclient.ini
+    # verify that LOG=TRUE|1 in eqclient.ini
     def verifyLogging(eqhome):
         # open eqclient.ini for reading
-        # search the file for LOG=TRUE
+        # search the file for LOG=TRUE|1
         # if not found error out
         # else proceed on
-        if 'Log=TRUE' in open(eqhome+"eqclient.ini").read():
+        if 'Log=TRUE' or 'Log=1' in open(eqhome+"eqclient.ini").read():
             print("DEBUG: Logging is enabled")
         else:
             print("ERROR: Please enable logging in your 'eqclient.ini' file by setting Log=TRUE")
@@ -77,7 +77,7 @@ class DepCheck:
             return logfile
         else:
             print("\n\nERROR: No chat log file exists for the selected character.\n")
-            print("Please verify that 'Log=TRUE' in 'eqclient.ini',\n")
+            print("Please verify that 'Log=TRUE|1' in 'eqclient.ini',\n")
             print("then log the character into the game and re-run this utility.\n")
             sys.exit()
 
